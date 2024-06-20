@@ -1,0 +1,204 @@
+//media query
+
+$breakpoints: (
+    "mob": "(max-width: 400px)",
+    "mob1": "(max-width: 430px)",
+    "rmob": "(max-width: 860px)",    
+    "sms": "(max-width: 630px )",
+    "sm": "(max-width: 500px )",
+    "md-st": "(max-width: 1122px )",
+    "st": "(max-width: 1128px )",
+    "th": "(max-width: 1000px)",
+    "ths": "(max-width: 720px)",
+    "stt": "(max-width: 974px )",
+    "md": "(min-width: 601px) and (max-width: 1222px )",
+    "inf": "(min-width:601px) and (max-width:1050px)",
+    "lg-md": "(min-width:770px)" and "(max-width:1000px)", 
+    "lg": "(max-width:1400px )",  
+    "lg-inf": "(min-width:1001px ) and (max-width:1500px)",
+    "inf-lg": "(min-width:1501px ) and (max-width:2000px)"
+
+);
+
+@mixin breakpoint($user-value) {
+    $my-map: map-get($breakpoints, $user-value);
+    @if $my-map {
+        @media (#{$my-map}) {
+            @content;
+        }
+    }@else {
+        @error "breakpoint #{$user-value} Not Working"
+    }
+};
+
+.title {
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  @include breakpoint(sms) {
+    gap: 20px;
+  }
+  @include breakpoint (mob1) {
+    position: relative;
+    top: -190px;
+  }
+  p {
+    @include breakpoint(sms) {
+        font-size: 15px !important; 
+
+    }
+  }
+}
+
+p {
+    @include breakpoint(md-st) {
+        font-size: 18px !important;
+    }
+}
+
+h1 {
+    @include breakpoint(md-st) {
+        font-size: 32px;
+    }
+}
+
+.dashboard {
+    @include breakpoint(rmob) {
+        object-fit: fill;
+        background-clip: border-box;
+        background-size: contain;
+    }
+    @include breakpoint(sms) {
+        background-image: url(./Pics/bg-imgmob.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+.header {
+    @include breakpoint(md-st) {
+        font-size: 50px;
+    }
+    @include breakpoint(th) {
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    @include breakpoint(sms) {
+        font-size: 35px;
+        text-align: center;
+        line-height: 45px; 
+
+    }
+}
+
+.hamburger {
+    @include breakpoint(mob1) {
+        margin-right: 10px; 
+    }
+}
+
+.active {
+    @include breakpoint(mob1) {
+        margin-right: 15px; 
+    }
+}
+
+.title-reel {
+   display: flex;
+   @include breakpoint (mob1) {
+    position: relative;
+    top: -150px;
+  }
+}
+
+.third {
+    @include breakpoint(ths) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        position: relative;
+    }
+
+    .write-up {
+       @include breakpoint(ths){
+        width:fit-content !important;
+       }
+    }
+}
+
+.thirds{
+    @include breakpoint(sm) {
+        height: 300px !important; 
+    }
+
+    @include breakpoint(th) {
+        height: 600px !important; 
+    }
+}
+
+.pat {
+    @include breakpoint(ths) {
+        display: none;
+    }
+}
+
+.card {
+    @include breakpoint(md-st) {
+        width: 350px;
+        max-width: 100%;
+    }
+}
+
+.span {
+    display: flex;
+    gap: 10px;
+}
+
+.ing {
+    @include breakpoint(st) {
+       display: none;
+    }
+}
+
+.ing2 {
+    @include breakpoint(th) {
+       display: none;
+    }
+}
+
+.ing3 {
+    @include breakpoint(ths) {
+       display: none;
+    }
+}
+
+.img1 {
+    width: 100%;
+}
+
+.foot-links {
+    @include breakpoint(sms) {
+        display: none; 
+    }
+}
+
+.foot-details {
+    @include breakpoint(sms) {
+        margin:auto;
+        align-items: center; 
+    }
+
+    .logo1{
+       margin: 0px auto;
+    }
+}
+
+.foot-container {
+   @include breakpoint(sm){
+      height: 70%;
+      position: relative; 
+      top: 70px;
+   }
+}

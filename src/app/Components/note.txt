@@ -1,0 +1,6 @@
+        <div className="embla__slide image">
+          <img src="https://i.ibb.co/6JpTLbJ/Mav3.png" alt="" />
+        </div>
+        <div className="embla__slide image">
+          <img src="https://i.ibb.co/SmN0VpH/mav2.png" alt="" />
+        </div>

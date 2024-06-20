@@ -1,0 +1,192 @@
+$breakpoints: (
+    "mob": "(max-width: 400px)",
+    "rmob": "(max-width: 860px)",    
+    "sms": "(max-width: 630px )",
+    "sm": "(max-width: 500px )",
+    "md-st": "(max-width: 1222px )",
+    "md": "(min-width: 601px) and (max-width: 1222px )",
+    "tab": "(max-width:1000px)",
+    "lg-md": "(min-width:770px)" and "(max-width:1000px)", 
+    "lg": "(max-width:1400px )",  
+    "lg-inf": "(min-width:1001px ) and (max-width:1500px)",
+    "inf-lg": "(min-width:1501px ) and (max-width:2000px)"
+
+);
+
+@mixin breakpoint($user-value) {
+    $my-map: map-get($breakpoints, $user-value);
+    @if $my-map {
+        @media (#{$my-map}) {
+            @content;
+        }
+    }@else {
+        @error "breakpoint #{$user-value} Not Working"
+    }
+};
+
+.nav-bar {
+    height: 45px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.links {
+    display: flex;
+    gap: 5vw;
+    width: fit-content;
+    @include breakpoint(tab) {
+        display: none;
+    }
+}
+
+.links > li {
+    cursor: pointer;
+}
+
+
+
+.icons {
+    display: flex;
+    gap: 10px;
+    margin-right: 20px;
+    @include breakpoint(tab) {
+        display: none;
+    }
+}
+
+.icon {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+//hamburger
+.hamburger {
+    height: 20px;
+    width: 35px;
+    cursor: pointer;
+    display: none;
+    z-index: 9999;
+    margin-right: 30px;
+    @include breakpoint(sm) {
+      display: block;
+    }
+    @include breakpoint(tab) {
+      display: block;
+    }
+    div {
+      @include breakpoint(tab) {
+        width: 35px ;
+        height: 3.5px;
+        background-color: white;  
+        display: block;
+        margin-bottom: 5px;
+      }
+    }
+    
+  }
+
+  .white{
+    background-color: white;
+  }
+
+  .active {
+    z-index: 9999;
+    height: 20px;
+    width: 25px;
+    margin-top: 10px;
+    margin-right: 30px;
+      div {
+        @include breakpoint(tab) {
+          width:35px;
+          height: 3.5px;
+          background-color: white;  
+      }
+      
+    }
+  }
+
+  .one{
+    animation-name: example;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+  .three {
+    animation: examples;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  .two {
+     display: none;
+  }
+
+  .ham-top {
+    animation-name: reverseexample;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+
+  .ham-mid {
+    animation-name: appear;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+ }
+
+ .ham-bottom {
+  animation: reverseexamples;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+ }
+
+ @keyframes example {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(45deg);
+      position: relative;
+      top:2px;
+  }
+}
+
+@keyframes examples{
+  from {transform: rotate(0deg);}
+  to {transform: rotate(-45deg);}
+}  
+
+@keyframes reverseexample {
+  from {transform: rotate(45deg);}
+  to {transform: rotate(0deg);
+      position: relative;
+      top:0px;
+  }
+}
+
+@keyframes reverseexamples{
+  from {transform: rotate(-45deg);}
+  to {transform: rotate(0deg);}
+} 
+
+a {
+    display: inline-block;
+    padding: 0px 10px;
+    position: relative;
+    font-family: inika;
+  }
+  a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+
